@@ -1,13 +1,13 @@
-# Frame — FIX15 Frozen Snapshot
+# Frame — FIX15 Frozen Baseline
 
-This repository stores the frozen FIX15 snapshot of the time-adaptive aerothermal–thermal–oxidation loosely coupled analysis framework.
+This repository stores the frozen FIX15 baseline of the time-adaptive aerothermal–thermal–oxidation loosely coupled analysis framework.
 
 ## Frozen version
 
 - Version: `FIX15`
 - Freeze date: `2026-08-21`
 - Validation case: `ADAPT_SIC_NOSE_1000S_PASSIVE`
-- Architecture: single Abaqus job, paired `PHYS + 0.01 s AUX` synchronization, no restart
+- Architecture: one Abaqus job, paired `PHYS + 0.01 s AUX` synchronization, no restart
 - Outer advancement: trajectory-aware adaptive coupling
 - Inner advancement: inherited accepted increment + temperature-change rate + external aerothermal-load variation
 - Net heat-flux history: unified DFLUX accepted-end record for both PHYS and AUX
@@ -24,15 +24,14 @@ This repository stores the frozen FIX15 snapshot of the time-adaptive aerotherma
 - Median PHYS/AUX net-heat-flux boundary mismatch: 0.0148%
 - Active recession / geometry refresh: none in this passive validation case
 
-## Frozen package
+## Frozen artifacts
 
-The exact frozen package is stored under `releases/Frame_ADAPT_1000s_SiC_Nose_20260821_FIX15.zip`.
+- Browsable freeze record: `FREEZE_FIX15.md`
+- Source snapshot archive: `releases/FIX15_source_only.tar.gz`
+- Exact validated local package name: `Frame_ADAPT_1000s_SiC_Nose_20260821_FIX15.zip`
+- Exact validated package SHA256: `984a28df682ebadac81a615c59008ab359dccc3062d095efe77ea0d96718510a`
 
-Package SHA256:
-
-`984a28df682ebadac81a615c59008ab359dccc3062d095efe77ea0d96718510a`
-
-The ZIP contains the runtime, Abaqus user-subroutine template, case configuration, trajectory, SiC nose model, preflight assets, documentation, package audit, and SHA256 manifest used for this validated version.
+The source snapshot contains the runtime source, Abaqus user-subroutine template, configuration, model, trajectory, tools, tests and documentation used by FIX15. The exact full runnable ZIP is retained as the validated release artifact identified by the SHA256 above; it also contains large generated/preflight/database assets that are intentionally not duplicated into the Git source tree.
 
 ## Local execution
 
@@ -42,8 +41,8 @@ Use the package root scripts:
 - `RUN_ADAPT_CASE.bat`
 - `COLLECT_RETURN_ONLY.bat`
 
-The validated Windows environment uses Abaqus through `C:\SIMULIA\Commands\abaqus.bat`.
+Validated Windows Abaqus command: `C:\SIMULIA\Commands\abaqus.bat`.
 
 ## Freeze policy
 
-`FIX15` is treated as the frozen baseline for subsequent fixed-step/reference comparisons and later development. New method changes should be developed in a new version rather than modifying the frozen FIX15 artifact.
+`FIX15` is the frozen baseline for fixed-step/reference comparisons and later method development. New changes should use a new version/branch rather than modifying this frozen baseline.
